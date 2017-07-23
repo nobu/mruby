@@ -659,6 +659,7 @@ retry:
         if (width < 0) {
           flags |= FMINUS;
           width = -width;
+          if (width < 0) mrb_raise(mrb, E_ARGUMENT_ERROR, "width too big");
         }
         p++;
         goto retry;

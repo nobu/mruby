@@ -107,3 +107,9 @@ assert("String#% invalid format shared substring") do
   fmt = ("x"*30+"%!")[0...-1]
   assert_equal fmt, sprintf(fmt, "")
 end
+
+assert("String#% negative width overflow") do
+  assert_raise ArgumentError do
+    "%*s" % [-(1<<31), ""]
+  end
+end
